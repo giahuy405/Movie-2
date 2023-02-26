@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { routes } from './app/routes'
+import NotFoundPage from "./components/NotFoundPage";
+import { fetchProfile } from "./features/Auth/thunk";
+import RouteComponent from "./HOCs/AppRoute";
 function App() {
+  const dispatch = useDispatch();
+  // nếu user đã đăng nhập website trước đó thì moi cái token ra ( dưới localStorage ) để đăng nhập
+  // dù user đăng nhập bất kì trang nào thì ta cũng cho user trạng thái đang đăng nhập
+  useEffect(() => {
+    dispatch(fetchProfile)
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+
+      <Routes>
+        {routes.map(({ path, component: Component, isPrivate , isAuth, redirectPath }) =>
+          <Route key={path} path={path} element={<RouteComponent isPrivate={isPrivate} isAuth={isAuth} Component={Component} redirectPath={redirectPath} />} />
+        )}
+        <Route path='/*' element={<NotFoundPage />} />
+      </Routes>
+
+    </BrowserRouter>
   );
 }
 

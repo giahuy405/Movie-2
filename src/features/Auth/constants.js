@@ -1,0 +1,1 @@
+export const POST_LOGIN_INFO = 'POST_LOGIN_INFO'
