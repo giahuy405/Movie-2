@@ -19,7 +19,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
+button:disabled{
+  opacity: 0.4;
+  cursor: no-drop;
+}
+input:disabled{
+  opacity: 0.5;
+  cursor: no-drop;
+}
 .ant-carousel .slick-dots li button {
   width: 14px;
   height: 14px;
@@ -54,7 +61,6 @@ code {
   right: 20px;
   z-index: 999;
   padding: 8px;
-  background-color: orangered;
   color: white;
   border-radius: 50%;
   text-align: center;
@@ -63,7 +69,11 @@ code {
   visibility: hidden;
   opacity: 0;
   transition: .5s;
+  border: 1px solid white;
+}
 
+.backToTop:hover {
+  background-color: #a43c24;
 }
 
 .backToTop.active {
@@ -214,19 +224,54 @@ code {
   cursor: no-drop;
 }
 
+
 .currentChooseSeat {
   background-color: rgb(0, 191, 0) !important;
 }
 
 .myReservedSeat {
-  background-color: white;
+  background-color: rgb(255, 94, 0) !important;
   border: 1px solid rgb(185, 185, 0);
-  box-shadow: -2px 2px 35px 0px rgba(237, 232, 64, 0.75);
-  -webkit-box-shadow: -2px 2px 35px 0px rgba(237, 232, 64, 0.75);
-  -moz-box-shadow: -2px 2px 35px 0px rgba(237, 232, 64, 0.75);
+  box-shadow: 2px 1px 36px -1px rgba(255, 123, 0, 0.75);
+  -webkit-box-shadow: 2px 1px 36px -1px rgba(255, 123, 0, 0.75);
+  -moz-box-shadow: 2px 1px 36px -1px rgba(255, 123, 0, 0.75);
+  color: white;
 }
 
+:where(.css-dev-only-do-not-override-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
+  border-color: orange;
+}
 
+.ant-select-focused:where(.css-dev-only-do-not-override-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+  border-color: rgb(255, 153, 0) !important;
+}
+
+.btnOpenModalVideo {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  width: 45px;
+  height: 45px;
+  line-height: 30px;
+  font-size: 15px;
+  border-radius: 50%;
+  color: orangered;
+  text-align: center;
+  transform: translateX(-50%);
+  background-color: white;
+  animation: ripple 1s linear infinite;
+  transition: .5s;
+}
+:where(.css-dev-only-do-not-override-1km3mtt).ant-pagination .ant-pagination-item-active a{
+  color: orangered;
+}
+:where(.css-dev-only-do-not-override-1km3mtt).ant-pagination .ant-pagination-item-active{
+  border-color: orangered;
+}
+.btnOpenModalVideo:hover{
+  background-color: orangered;
+  color: white;
+}
 @media screen and (max-width:750px) {
   .normalSeat {
     width: 29px;
@@ -266,5 +311,16 @@ code {
   .X-icon-button {
     width: 19px;
     height: 16px;
+  }
+}
+
+/* ripple: gợn sóng */
+@keyframes ripple {
+  0% {
+      box-shadow: 0 0 0 0 rgba(184, 83, 11, 0.25), 0 0 0 10px rgba(162, 86, 15, 0.4), 0 0 0 20px rgba(162, 84, 15, 0.4);
+  }
+
+  100% {
+      box-shadow: 0 0 0 10px rgba(162, 81, 15, 0.3), 0 0 0 20px rgba(162, 71, 15, 0.4), 0 0 0 40px rgba(245, 128, 50, 0);
   }
 }

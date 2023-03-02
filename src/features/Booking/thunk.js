@@ -15,10 +15,16 @@ export const fetchBanners = async (dispatch) => {
 
 export const fetchMovies = (soTrang) => async (dispatch) => {
     try {
+        dispatch({
+            type: actionTypes.DISPLAY_LOADING
+        })
         const res = await movieService.getMoviesPagination(soTrang);
         dispatch({
             type: actionTypes.FETCH_MOVIES,
             payload: res.data.content
+        })
+        dispatch({
+            type: actionTypes.HIDDEN_LOADDING
         })
     } catch (err) {
         console.log(err)
@@ -90,11 +96,12 @@ export const postBookTicket = info => async (dispatch) => {
             type: actionTypes.DISPLAY_LOADING
         })
         const res = await movieService.postBookTicket(info);
-        
+
         if (res.data.statusCode === 200) {
             dispatch({
                 type: actionTypes.HIDDEN_LOADDING
             })
+            // chuyển sang trang activeTabs khác
             dispatch({
                 type: actionTypes.COMPLETE_CHECKOUT
             })

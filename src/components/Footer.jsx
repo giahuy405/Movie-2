@@ -1,6 +1,7 @@
 import React from 'react';
-
+import { useTranslation } from 'react-i18next';
 const Footer = () => {
+    const { t, i18n } = useTranslation();
     return (
         <div>
             <footer className="py-6 dark:bg-gray-800 dark:text-gray-50">
@@ -15,17 +16,16 @@ const Footer = () => {
                             </a>
                         </div>
                         <div className="col-span-full text-center md:text-left md:col-span-6">
-                            <p className="pb-1 text-lg text-center font-bold">TIX – SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION</p>
+                            <p className="pb-1 text-lg text-center font-bold">TIX – {t('SẢN PHẨM CỦA CÔNG TY CỔ PHẦN ZION')}</p>
                             <ul className='text-sm text-center'>
                                 <li>
-                                    Địa chỉ: Z06 Đường số 13, Phường Tân Thuận Đông, Quận 7, Tp. Hồ Chí Minh, Việt Nam.
+                                    {t('Địa chỉ')}: Z06 Đường số 13, Phường Tân Thuận Đông, Quận 7, Tp. Hồ Chí Minh, Việt Nam.
                                 </li>
                                 <li>
-                                    Giấy chứng nhận đăng ký kinh doanh số: 0101659783,
-                                    đăng ký thay đổi lần thứ 30, ngày 22 tháng 01 năm 2020 do Sở kế hoạch và đầu tư Thành phố Hồ Chí Minh cấp.
+                                    {t('Giấy chứng nhận đăng ký kinh doanh số: 0101659783,đăng ký thay đổi lần thứ 30, ngày 22 tháng 01 năm 2020 do Sở kế hoạch và đầu tư Thành phố Hồ Chí Minh cấp.')}
                                 </li>
                                 <li>
-                                    Số Điện Thoại (Hotline): <span className='text-yellow-500'>1900 545 436</span>
+                                    {t('Số Điện Thoại (Hotline)')}: <span className='text-yellow-500'>1900 545 436</span>
                                 </li>
                             </ul>
                         </div>
@@ -35,12 +35,12 @@ const Footer = () => {
                     </div>
                     <div className="grid justify-center pt-6 lg:justify-between">
                         <div className="flex flex-col self-center text-sm text-center md:block lg:col-start-1 md:space-x-6">
-                            <span>©2023 All rights reserved</span>
+                            <span>©2023 {t('Đã đăng ký bản quyền')}</span>
                             <a rel="noopener noreferrer" href="#">
-                                <span>Privacy policy</span>
+                                <span>{t('Chính sách bảo mật')}</span>
                             </a>
                             <a rel="noopener noreferrer" href="#">
-                                <span>Terms of service</span>
+                                <span>{t('Điều khoản dịch vụ')}</span>
                             </a>
                         </div>
                         <div className="flex justify-center pt-4 space-x-4 lg:pt-0 lg:col-end-13">
@@ -64,7 +64,7 @@ const Footer = () => {
                     </div>
                 </div>
             </footer>
-            <a class="backToTop" href="#">
+            <a className="backToTop bg-orange-600" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75L12 3m0 0l3.75 3.75M12 3v18" />
                 </svg>

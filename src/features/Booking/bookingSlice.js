@@ -1,4 +1,3 @@
-import { genTypeStyle } from 'antd/es/alert/style'
 import { produce } from 'immer'
 import * as actionTypes from './constants'
 
@@ -13,7 +12,7 @@ const initialState = {
 
     orderSeats: [],
     isLoading: false,
-    activeTabs : '1',
+    activeTabs: '1',
 }
 
 export const bookingReducer = (state = initialState, { type, payload }) => {
@@ -54,6 +53,15 @@ export const bookingReducer = (state = initialState, { type, payload }) => {
         }
         if (type === actionTypes.COMPLETE_CHECKOUT) {
             draft.activeTabs = '2';
+        }
+        if (type === actionTypes.COMPLETE_CHECKOUT2) {
+            draft.activeTabs = '3';
+        }
+        if (type === actionTypes.SET_DEFAULT_TAB) {
+            draft.activeTabs = '1';
+        }
+        if (type === actionTypes.CLEAR_ORDER_SEAT) {
+            draft.orderSeats = []
         }
     })
 }

@@ -9,7 +9,7 @@ const HomeCarousel = () => {
         effect={'fade'}
         className='bg-black text-white h-100'>
             {banners.map(item =>
-                <img src={item.hinhAnh} alt={item.maPhim} className='h-100' />
+                <img key={item.maPhim} src={item.hinhAnh} alt={item.maPhim} className='h-100' />
             )}
         </Carousel>
     );

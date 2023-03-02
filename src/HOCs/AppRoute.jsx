@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
@@ -14,6 +14,7 @@ const RouteComponent = ({ isAuth, isPrivate, Component, redirectPath }) => {
     if (isAuth) {
         return !infoUser ? <Component /> : <Navigate to={redirectPath} />
     }
+   
     return (
         <Component />
     );
