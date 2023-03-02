@@ -27,6 +27,14 @@ input:disabled{
   opacity: 0.5;
   cursor: no-drop;
 }
+:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active:hover{
+  border-color: black;
+  color: black!important;
+}
+:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active:hover a{
+  color: black;
+}
+ 
 .ant-carousel .slick-dots li button {
   width: 14px;
   height: 14px;
@@ -238,11 +246,13 @@ input:disabled{
   color: white;
 }
 
-:where(.css-dev-only-do-not-override-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
-  border-color: orange;
+/* :where(.css-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
+  border-color: orange!important;
+} */
+:where(.css-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector{
+  border-color: orange!important;
 }
-
-.ant-select-focused:where(.css-dev-only-do-not-override-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
+.ant-select-focused:where(.css-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
   border-color: rgb(255, 153, 0) !important;
 }
 
@@ -262,11 +272,11 @@ input:disabled{
   animation: ripple 1s linear infinite;
   transition: .5s;
 }
-:where(.css-dev-only-do-not-override-1km3mtt).ant-pagination .ant-pagination-item-active a{
-  color: orangered;
+:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active a{
+  color: orangered!important;
 }
-:where(.css-dev-only-do-not-override-1km3mtt).ant-pagination .ant-pagination-item-active{
-  border-color: orangered;
+:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active{
+  border-color: orangered!important;
 }
 .btnOpenModalVideo:hover{
   background-color: orangered;

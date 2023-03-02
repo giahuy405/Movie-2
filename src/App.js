@@ -9,6 +9,7 @@ function App() {
   const dispatch = useDispatch();
   // nếu user đã đăng nhập website trước đó thì moi cái token ra ( dưới localStorage ) để đăng nhập
   // dù user đăng nhập bất kì trang nào thì ta cũng cho user trạng thái đang đăng nhập
+
   useEffect(() => {
     dispatch(fetchProfile)
   }, [])

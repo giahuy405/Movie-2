@@ -8,9 +8,10 @@ import CustomInput from './components/CustomInput';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { fetchProfile, updateUser } from './thunk';
-
+import { Table } from 'antd';
 import Swal from 'sweetalert2';
-import TabPane from 'antd/es/tabs/TabPane';
+import moment from 'moment';
+
 const Profile = () => {
 
     const { t, i18n } = useTranslation();
@@ -21,10 +22,14 @@ const Profile = () => {
     const onChangeTabs = (key) => {
         console.log(key);
     };
+    // luôn scroll to top mặc định
     useEffect(() => {
-        console.log('change')
-    }, [infoUser])
+        window.scrollTo(0, 0);
+    })
 
+    useEffect(() => {
+        // window.location.reload(false)
+    }, [infoUser])
 
     let token = localStorage.getItem('userToken');
     // kiểm tra nếu chưa có token thì dù user login vào /profile cũng sẽ đá user sang /signin
@@ -40,7 +45,7 @@ const Profile = () => {
 
         await dispatch(updateUser(values));
         await dispatch(fetchProfile)
-      
+
         const Toast = Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -63,7 +68,7 @@ const Profile = () => {
         // tóm lại : 
         // false -> reload cache 
         // true -> reload server
-        window.location.reload(false)
+        // window.location.reload(false)
     }
     const items = [
         {
@@ -187,7 +192,9 @@ const Profile = () => {
         {
             key: '2',
             label: <h3 className='font-bold'>LỊCH SỬ ĐẶT VÉ</h3>,
-            children: `Content of Tab Pane 2`,
+            children: <>
+                <ProfileTable />
+            </>,
         },
     ];
 
@@ -201,7 +208,6 @@ const Profile = () => {
                     </div>
                     <div className='md:col-span-10 md:pl-10 col-span-12 px-3'>
                         {infoUser && <Tabs defaultActiveKey="1" items={items} onChange={onChangeTabs} />}
-
                     </div>
                 </div>
             </div>
@@ -211,3 +217,48 @@ const Profile = () => {
 };
 
 export default Profile;
+
+
+const ProfileTable = () => {
+    const { infoUser } = useSelector(state => state.authReducer);
+
+
+    const columns = [
+        {
+            title: 'STT',
+            dataIndex: 'giaVe',
+            value: (text) => <div>{text}</div>,
+        
+        },
+        {
+            title: 'Tên phim',
+            dataIndex: 'tenPhim',
+            value: (text) => <div>{text}</div>,
+        },
+        {
+            title: 'Ngày chiếu',
+            dataIndex: 'ngayDat',
+       
+        },
+        {
+            title: 'Tên rạp',
+            dataIndex: '',
+             
+        },
+        {
+            title: 'Mã vé',
+            dataIndex: 'maVe',
+            value: (text) => <div>{text}</div>,
+        },
+        {
+            title: 'Giá vé (vnd)',
+            dataIndex: 'address',
+        },
+
+    ];
+    const data = infoUser?.thongTinDatVe;
+    const onChange = (pagination, filters, sorter, extra) => {
+        console.log('params', pagination, filters, sorter, extra);
+    };
+    return <Table columns={columns} dataSource={data} onChange={onChange} />
+}
