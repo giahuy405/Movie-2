@@ -22,7 +22,7 @@ const HomeTabs = () => {
     const [minWith, setminWith] = useState('min-w-[400px]')
 
 
-
+    // khi màn hình nhỏ hơn 960px đổi position của Tabs
     useEffect(() => {
         const mediaQuery = window.matchMedia('(max-width: 960px)');
         if (mediaQuery.matches) {
@@ -42,7 +42,6 @@ const HomeTabs = () => {
                 setminWith('md:min-w-[220px]')
             }
         };
-
         mediaQuery.addListener(handleMediaQueryChange);
         return () => mediaQuery.removeListener(handleMediaQueryChange);
     }, []);
@@ -53,12 +52,11 @@ const HomeTabs = () => {
             <h1 className='text-center text-4xl font-bold my-10'>{t('CÁC SUẤT CHIẾU')}</h1>
             <Tabs
                 style={{ height: 450 }}
-
-                tabPosition={tabPosition}
+                tabPosition='left'
                 items={infoTheater.map((item, index) => {
                     return {
                         key: index,
-                        label: <img src={item.logo} width={40} alt={item.logo}
+                        label: <img src={item.logo} className='' width={42} alt={item.logo}
                             // ảnh bị lỗi sẽ hiển thị ảnh này
                             onError={({ currentTarget }) => {
                                 currentTarget.onerror = null; // prevents looping
@@ -71,34 +69,26 @@ const HomeTabs = () => {
                                 return {
                                     key: item.maCumRap,
                                     label: <div className='text-left'>
-                                        <h3 className={classNames({ minWith }, 'md:w-72 text-left font-bold')}>{item.tenCumRap}</h3>
-
+                                        <h3 className={classNames({ minWith }, 'md:w-72 text-left font-bold ml-4')}>{item.tenCumRap}</h3>
                                     </div>,
                                     children: <div className='myTab'>
-                                        <Tabs
-                                            tabPosition='left'
-                                            style={{ maxHeight: 450 }}
-                                            items={item.danhSachPhim.map(item => {
-                                                return {
-                                                    key: item.maPhim,
-                                                    label: <div className='setWidthTabs flex'>
-                                                        <img src={item.hinhAnh} alt="" width={100} height={200} />
-                                                        <div className='ml-2'>
-                                                            <h4 className='font-bold text-sm'>{item.tenPhim}</h4>
-                                                            <div className='grid grid-cols-3 gap-2'>{item.lstLichChieuTheoPhim.slice(0, 8).map((item, index) =>
-                                                                <Button
-                                                                    key={index}
-                                                                    className='hover:border-lime-600' onClick={() =>
-                                                                        navigateSeats(item.maLichChieu)}>
-                                                                    {moment(item.ngayChieuGioChieu).format('hh:mm A')}
-                                                                </Button>
-                                                            )}</div>
-                                                        </div>
-                                                    </div>
+                                        {item.danhSachPhim.slice(0,3).map((item,index) => {
+                                            return (<div className=' flex my-4 ml-2' key={index}>
+                                                <img src={item.hinhAnh} alt="" width={80} height={170} />
+                                                <div className='ml-2'>
+                                                    <h4 className='font-bold text-sm mb-2 dark:text-white'>{item.tenPhim}</h4>
+                                                    <div className='grid grid-cols-2 md:grid-cols-3 gap-2'>{item.lstLichChieuTheoPhim.slice(0, 4).map((item, index) =>
+                                                        <Button
+                                                            key={item.maLichChieu}
+                                                            className='hover:border-lime-600 max-w-[90px] dark:bg-[#393E46] dark:text-white' onClick={() =>
+                                                                navigateSeats(item.maLichChieu)}>
+                                                            {moment(item.ngayChieuGioChieu).format('hh:mm A')}
+                                                        </Button>
+                                                    )}</div>
+                                                </div>
+                                            </div>)
+                                        })}
 
-                                                }
-                                            })}
-                                        />
                                     </div>
                                 }
                             })}

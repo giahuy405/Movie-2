@@ -11,8 +11,8 @@ const MovieList = () => {
     const { t, i18n } = useTranslation();
     return (
         <div className='max-w-4xl mx-auto' id='lichChieu'>
-            <h1 className='text-center text-4xl font-bold my-10'>{t('DANH SÁCH PHIM')}</h1>
-            <div className='grid grid-cols-2 md:grid-cols-3 gap-6 p-2 lg:grid-cols-4'>
+            <h1 className='text-center text-4xl font-bold my-10 text-black dark:text-white'>{t('DANH SÁCH PHIM')}</h1>
+            <div className='grid grid-cols-1 md:grid-cols-3 gap-6 p-2 lg:grid-cols-4'>
                 {movies.items?.map(item =>
                     <MovieItem key={item.maPhim} item={item} />
                 )}

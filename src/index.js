@@ -8,6 +8,10 @@ import store from './app/store'
 import "../node_modules/react-modal-video/scss/modal-video.scss"
 import './i18n';
 
+ 
+
+const target = document.getElementById('root');
+ 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
@@ -15,7 +19,7 @@ root.render(
     <App />
     </Provider>
   
-);
+,target);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -1,6 +1,6 @@
 import { https } from "../../../serivce/config"
 export const movieService = {
-    getBanners: () => https.get('QuanLyPhim/LayDanhSachBanner?maNhom=GP03'),
+    getBanners: () => https.get('QuanLyPhim/LayDanhSachBanner?maNhom=GP04'),
     getMoviesPagination: (soTrang) => https.get('QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=GP03', {
         params: {
             soTrang,
@@ -33,9 +33,14 @@ export const movieService = {
             }
         })
     },
-    // post dữ
-    postBookTicket: (infoBook) =>{
+    postBookTicket: (infoBook) => {
         const url = `QuanLyDatVe/DatVe`
-        return https.post(url,infoBook)
+        return https.post(url, infoBook,
+            {
+                headers: {
+                    TokenCybersoft: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZW5Mb3AiOiJCb290Y2FtcCAzOCIsIkhldEhhblN0cmluZyI6IjA2LzA4LzIwMjMiLCJIZXRIYW5UaW1lIjoiMTY5MTI4MDAwMDAwMCIsIm5iZiI6MTY2MjM5NzIwMCwiZXhwIjoxNjkxNDI3NjAwfQ.66mNB20qUNFA8TlIzjAq7Ekv1hVfR3hQB4I3_yLui8Y',
+                    Authorization: "Bearer " + localStorage.getItem('userToken')
+                }
+            })
     }
 }

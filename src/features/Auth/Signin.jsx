@@ -1,10 +1,9 @@
 import { t } from 'i18next';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useNavigate, } from 'react-router-dom';
-import Loading from '../../components/Loading';
 import AuthLayout from '../../HOCs/AuthLayout';
-import { postLoginInfo } from './thunk';
+import { fetchProfile, postLoginInfo } from './thunk';
 import Swal from 'sweetalert2'
 import { useTranslation } from 'react-i18next';
 const Signin = () => {
@@ -60,7 +59,8 @@ const Signin = () => {
         // nên dùng async await để đợi thằng dispatch call API xong mới navigate
         // bên trong hàm dispatch nhớ dùng try catch ko dc dùng .then().catch() sẽ ko chạy dc
 
-        const token = localStorage.getItem('userToken')
+        const token = localStorage.getItem('userToken');
+
         if (token) {
             const Toast = Swal.mixin({
                 toast: true,
@@ -81,12 +81,11 @@ const Signin = () => {
         }
         else setErrorInfo({ taiKhoan: "Vui lòng kiểm tra lại tài khoản", matKhau: "Vui lòng kiểm tra lại mật khẩu" })
     }
-
     return (
         <AuthLayout >
             <div className="">
                 <div className="mb-8">
-                    <div className="py-4 bg-orange-200  lg:bg-white flex justify-center lg:justify-center lg:pb-0">
+                    <div className="py-2 bg-orange-200  lg:bg-white flex justify-center lg:justify-center lg:pb-2 dark:bg-[#393E46]">
                         <div className="cursor-pointer flex items-center">
                             <div>
                                 <img width={65} src="https://movie-booking-project.vercel.app/img/headTixLogo.png" alt="logo" />
@@ -94,14 +93,14 @@ const Signin = () => {
                             <div className="text-2xl text-orange-600 tracking-wide ml-2 font-semibold ">TIX VN</div>
                         </div>
                     </div>
-                    <div className="mt-6 px-12   lg:px-12  max-w-sm mx-auto shadow-2xl py-4 rounded-xl">
+                    <div className="mt-6 px-12 lg:px-12  max-w-sm mx-auto shadow-2xl py-4 rounded-xl dark:bg-[#393E46] dark:text-white">
                         <h2 className="text-center text-2xl text-orange-600 font-display font-semibold   xl:text-3xl
           xl:text-bold">{t('Đăng nhập')}</h2>
                         <div className="mt-8">
                             <form onSubmit={handleSubmit}>
                                 <div>
-                                    <div className="text-sm font-bold text-gray-700 tracking-wide">{t('Tài khoản')}</div>
-                                    <input className="w-full  text-sm py-1 border-b border-gray-300 focus:outline-none focus:border-orange-600"
+                                    <div className="text-sm font-bold text-gray-700 tracking-wide dark:text-white">{t('Tài khoản')}</div>
+                                    <input className="w-full  dark:bg-[#393E46]     text-sm py-1 border-b border-gray-300 focus:outline-none focus:border-orange-600"
                                         type
                                         name='taiKhoan'
                                         onChange={handleChange}
@@ -112,11 +111,11 @@ const Signin = () => {
                                 </div>
                                 <div className="mt-8">
                                     <div className="flex justify-between items-center">
-                                        <div className="text-sm font-bold text-gray-700 tracking-wide">
+                                        <div className="text-sm font-bold text-gray-700 tracking-wide dark:text-white">
                                             {t('Mật khẩu')}
                                         </div>
                                     </div>
-                                    <input className="w-full  text-sm py-1  border-b border-gray-300 focus:outline-none focus:border-orange-600 "
+                                    <input className="w-full  text-sm py-1 dark:bg-[#393E46]  border-b border-gray-300 focus:outline-none focus:border-orange-600 "
                                         name='matKhau'
                                         type='password'
                                         onChange={handleChange}
@@ -127,7 +126,6 @@ const Signin = () => {
                                 </div>
                                 <div className="mt-10">
                                     <button
-
                                         type='submit'
                                         className="bg-orange-600 text-gray-100 p-2.5 w-full rounded-full tracking-wide
                       font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-orange-700
@@ -136,7 +134,7 @@ const Signin = () => {
                                     </button>
                                 </div>
                             </form>
-                            <div className="mt-6 text-sm font-display font-semibold text-gray-700 text-center">
+                            <div className="mt-6 text-sm font-display font-semibold text-gray-700 text-center dark:text-white">
                                 {t('Bạn chưa có tài khoản ?')} <NavLink to='/signup' className="cursor-pointer text-orange-600 hover:text-orange-700">{t('Đăng ký')}</NavLink>
                             </div>
                         </div>

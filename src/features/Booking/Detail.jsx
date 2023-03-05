@@ -24,7 +24,7 @@ const Detail = () => {
     // luôn scroll to top mặc định
     useEffect(() => {
         window.scrollTo(0, 0);
-    })
+    },[])
 
     const navigateSeats = (id) => {
         const token = localStorage.getItem('userToken');
@@ -58,8 +58,8 @@ const Detail = () => {
     const items = [
         {
             key: '1',
-            label: <h3 className='text-lg font-bold' >{t('LỊCH CHIẾU')}</h3>,
-            children: <div className='px-3'>
+            label: <h3 className='text-lg font-bold ' >{t('LỊCH CHIẾU')}</h3>,
+            children: <div className='px-3 dark:text-white'>
                 {detailMovie.heThongRapChieu?.length ?
                     <Tabs
                         tabPosition={tabPosition}
@@ -74,8 +74,8 @@ const Detail = () => {
                                     <div key={item.maCumRap} className='ml-4 flex' >
                                         <img src={item.hinhAnh} alt={item.hinhAnh} width={60} className='mr-3' />
                                         <div>
-                                            <h3 className='font-bold'>{item.tenCumRap}</h3>
-                                            <p className='text-gray-500' style={{ fontSize: 12 }}>{item.diaChi}</p>
+                                            <h3 className='font-bold dark:text-white'>{item.tenCumRap}</h3>
+                                            <p className='text-gray-500 dark:text-gray-300' style={{ fontSize: 12 }}>{item.diaChi}</p>
                                             <div className="grid grid-cols-3 md:grid-cols-4 gap-1">
                                                 {item.lichChieuPhim?.slice(0, 4).map(item =>
                                                     <button onClick={() => {
@@ -100,7 +100,7 @@ const Detail = () => {
         {
             key: '2',
             label: <h3 className='text-lg font-bold' >{t('THÔNG TIN')}</h3>,
-            children: <div>
+            children: <div className='dark:text-white'>
                 <div className="grid grid-cols-12 px-8 pt-2">
                     <div className='col-span-12'>
                         <div className="flex mb-2">
@@ -150,7 +150,7 @@ const Detail = () => {
                             <div className='relative'>
                                 <img width={200} src={detailMovie.hinhAnh} className='shadow-2xl' alt="" />
                                 <button className="btnOpenModalVideo" onClick={() => setOpen(true)}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style={{ maxWidth: 30, textAlign: 'center' }} class="inline-block">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style={{ maxWidth: 30, textAlign: 'center' }} className="inline-block">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
                                     </svg>
@@ -188,8 +188,8 @@ const Detail = () => {
                 </div>
 
             </div>
-            <div className='bg-slate-700 py-10'>
-                <div className='detailTabs mx-auto max-w-4xl text-white bg-white rounded-lg min-h-[350px] shadow-2xl'>
+            <div className='bg-[#EEEEEE] dark:bg-[#222831] py-10'>
+                <div className='detailTabs mx-auto max-w-4xl text-white bg-white dark:bg-[#393E46]  rounded-lg min-h-[350px] shadow-2xl'>
                     <Tabs
                         style={{ outline: 'none' }}
                         defaultActiveKey="1"

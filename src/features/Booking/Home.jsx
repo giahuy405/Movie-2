@@ -3,10 +3,12 @@ import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-import Loading from '../../components/Loading';
 import Layout from '../../HOCs/Layout';
+import { fetchProfile } from '../Auth/thunk';
 import HomeCarousel from './components/HomeCarousel';
+import HomeNews from './components/HomeNews';
 import HomeTabs from './components/HomeTabs';
+import IntroduceApp from './components/IntroduceApp';
 import MovieList from './components/MovieList';
 import { fetchBanners, fetchInfoTheater, fetchMovies } from './thunk';
 
@@ -16,7 +18,9 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(fetchBanners);
-        dispatch(fetchInfoTheater)
+        dispatch(fetchInfoTheater);
+        // fetch dữ liệu infoUser mới
+        dispatch(fetchProfile)
     }, [])
 
     useEffect(() => {
@@ -27,8 +31,8 @@ const Home = () => {
             <HomeCarousel />
             <MovieList />
             <HomeTabs />
-           
-           
+            <HomeNews />
+            <IntroduceApp/>
         </Layout>
     );
 };

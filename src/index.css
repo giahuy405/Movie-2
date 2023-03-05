@@ -19,22 +19,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-button:disabled{
+
+button:disabled {
   opacity: 0.4;
   cursor: no-drop;
 }
-input:disabled{
+
+input:disabled {
   opacity: 0.5;
   cursor: no-drop;
 }
-:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active:hover{
+
+:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active:hover {
   border-color: black;
-  color: black!important;
+  color: black !important;
 }
-:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active:hover a{
+
+:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active:hover a {
   color: black;
 }
- 
+
 .ant-carousel .slick-dots li button {
   width: 14px;
   height: 14px;
@@ -246,14 +250,50 @@ input:disabled{
   color: white;
 }
 
-/* :where(.css-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
-  border-color: orange!important;
-} */
-:where(.css-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector{
-  border-color: orange!important;
+:where(.css-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer):hover .ant-select-selector {
+  border-color: orange !important;
 }
+
 .ant-select-focused:where(.css-1km3mtt).ant-select:not(.ant-select-disabled):not(.ant-select-customize-input):not(.ant-pagination-size-changer) .ant-select-selector {
   border-color: rgb(255, 153, 0) !important;
+}
+
+:where(.css-1km3mtt).ant-btn-default:not(:disabled):hover {
+  color: rgb(255, 94, 0) !important;
+  border-color: rgb(255, 94, 0) !important;
+}
+
+.carouselIntroduce :where(.css-1km3mtt).ant-carousel-vertical .slick-dots-right {
+  inset-inline-end: -17px;
+}
+
+.carouselIntroduce .ant-carousel .slick-dots li.slick-active {
+  width: 14px;
+  height: 14px;
+
+}
+
+.carouselIntroduce :where(.css-1km3mtt).ant-carousel-vertical .slick-dots li.slick-active button {
+  width: 14px;
+  height: 14px;
+}
+
+:where(.css-1km3mtt).ant-tour .ant-tour-inner .ant-tour-footer .ant-tour-indicators .ant-tour-indicator-active {
+  background-color: #ff8600;
+}
+
+
+
+:where(.css-1km3mtt).ant-btn-primary {
+  background-color: #ff8600;
+}
+
+:where(.css-1km3mtt).ant-btn-primary:not(:disabled):hover {
+  background-color: rgb(255, 94, 0);
+}
+
+:where(.css-1km3mtt).ant-carousel .slick-dots li.slick-active button {
+  background-color: rgb(255, 94, 0);
 }
 
 .btnOpenModalVideo {
@@ -272,16 +312,139 @@ input:disabled{
   animation: ripple 1s linear infinite;
   transition: .5s;
 }
-:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active a{
-  color: orangered!important;
+
+.tabHomeNews .ant-tabs .ant-tabs-ink-bar {
+  background-color: transparent;
 }
-:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active{
-  border-color: orangered!important;
+
+.dark :where(.css-1km3mtt).ant-card {
+  background-color: #393E46;
+  color: white !important;
 }
-.btnOpenModalVideo:hover{
-  background-color: orangered;
+
+.dark :where(.css-1km3mtt).ant-card-bordered {
+  border: none;
+}
+
+.dark .ant-card-meta-detail .ant-card-meta-title {
+  color: white !important;
+}
+
+.dark .ant-card-meta-detail .ant-card-meta-description {
+  color: gainsboro !important;
+}
+
+:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active a {
+  color: orangered !important;
+}
+
+.dark :where(.css-1km3mtt).ant-pagination .ant-pagination-item a {
   color: white;
 }
+
+.dark :where(.css-1km3mtt).ant-tabs .ant-tabs-tab-btn {
+  color: white;
+}
+
+.dark :where(.css-1km3mtt).ant-pagination .ant-pagination-item-active {
+  background-color: #393E46;
+  border-color: #ff5733;
+  color: orangered !important;
+}
+
+.dark :where(.css-1km3mtt).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  background-color: #393E46;
+  color: white;
+}
+
+.dark :where(.css-1km3mtt).ant-select .ant-select-arrow {
+  color: white;
+}
+
+.dark :where(.css-1km3mtt).ant-table-wrapper .ant-table {
+  background-color: #393E46;
+  color: white;
+}
+
+.dark :where(.css-1km3mtt).ant-table-wrapper td.ant-table-column-sort {
+  background-color: #ff5833a6;
+}
+
+.dark :where(.css-1km3mtt).ant-table-wrapper .ant-table-tbody>tr.ant-table-row:hover>td,
+.dark :where(.css-1km3mtt).ant-table-wrapper .ant-table-tbody>tr>td.ant-table-cell-row-hover {
+  background: #505050;
+}
+
+:where(.css-1km3mtt).ant-table-wrapper .ant-table-column-sorter-up.active,
+:where(.css-1km3mtt).ant-table-wrapper .ant-table-column-sorter-down.active {
+  color: orangered;
+}
+
+.dark :where(.css-1km3mtt).ant-tabs-card>.ant-tabs-nav .ant-tabs-tab-active,
+.dark :where(.css-1km3mtt).ant-tabs-card>div>.ant-tabs-nav .ant-tabs-tab-active {
+  background-color: #222831;
+}
+
+:where(.css-1km3mtt).ant-tabs .ant-tabs-tab-btn:focus:not(:focus-visible),
+:where(.css-1km3mtt).ant-tabs .ant-tabs-tab-remove:focus:not(:focus-visible),
+:where(.css-1km3mtt).ant-tabs .ant-tabs-tab-btn:active,
+:where(.css-1km3mtt).ant-tabs .ant-tabs-tab-remove:active {
+  color: orangered;
+}
+
+.dark :where(.css-1km3mtt).ant-table-wrapper .ant-table-thead>tr>th,
+.dark :where(.css-1km3mtt).ant-table-wrapper .ant-table-thead>tr>td {
+  background-color: #ababab;
+}
+
+.dark :where(.css-1km3mtt).ant-pagination .ant-pagination-item-active a {
+  color: orangered !important;
+}
+
+.dark :where(.css-1km3mtt).ant-pagination .ant-pagination-prev button,
+.dark :where(.css-1km3mtt).ant-pagination .ant-pagination-next button {
+  color: white;
+}
+
+.anticon {
+  vertical-align: 1px;
+}
+
+.tabHomeNews .ant-tabs .ant-tabs-tab .ant-tabs-tab-btn:hover {
+  transform: scale(1.05);
+}
+
+:where(.css-1km3mtt).ant-tour {
+  max-width: 350px;
+}
+
+:where(.css-1km3mtt).ant-pagination .ant-pagination-item-active {
+  border-color: orangered !important;
+}
+
+.btnOpenModalVideo {
+  opacity: 0.8;
+}
+
+.btnOpenModalVideo:hover {
+  background-color: orangered;
+  color: white;
+  opacity: 1
+}
+
+.dark .btnOpenModalVideo {
+  background-color: #393E46;
+  border: 1px solid orangered;
+  opacity: 0.75;
+}
+
+.dark .btnOpenModalVideo:hover {
+  color: #393E46;
+  background-color: orangered;
+  border: 1px solid orangered;
+  opacity: 1
+}
+
 @media screen and (max-width:750px) {
   .normalSeat {
     width: 29px;
@@ -327,10 +490,10 @@ input:disabled{
 /* ripple: gợn sóng */
 @keyframes ripple {
   0% {
-      box-shadow: 0 0 0 0 rgba(184, 83, 11, 0.25), 0 0 0 10px rgba(162, 86, 15, 0.4), 0 0 0 20px rgba(162, 84, 15, 0.4);
+    box-shadow: 0 0 0 0 rgba(184, 83, 11, 0.25), 0 0 0 10px rgba(162, 86, 15, 0.4), 0 0 0 20px rgba(162, 84, 15, 0.4);
   }
 
   100% {
-      box-shadow: 0 0 0 10px rgba(162, 81, 15, 0.3), 0 0 0 20px rgba(162, 71, 15, 0.4), 0 0 0 40px rgba(245, 128, 50, 0);
+    box-shadow: 0 0 0 10px rgba(162, 81, 15, 0.3), 0 0 0 20px rgba(162, 71, 15, 0.4), 0 0 0 40px rgba(245, 128, 50, 0);
   }
 }

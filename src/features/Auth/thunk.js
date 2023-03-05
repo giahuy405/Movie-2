@@ -8,16 +8,14 @@ export const postLoginInfo = data => async (dispatch) => {
             type: DISPLAY_LOADING
         })
         const res = await AuthService.signIn(data);
+        localStorage.setItem('userToken', res.data.content.accessToken);
         dispatch({
             type: actionTypes.POST_LOGIN_INFO,
             payload: res.data.content
         })
-        console.log(res.statusCode)
         dispatch({
             type: HIDDEN_LOADDING
         })
-        localStorage.setItem('userToken', res.data.content.accessToken);
-
     } catch (err) {
         console.log(err);
         dispatch({
@@ -29,7 +27,6 @@ export const postLoginInfo = data => async (dispatch) => {
 export const fetchProfile = async (dispatch) => {
     try {
         const res = await AuthService.fetchProfile();
-        console.log('thunk', res.data.content)
         await dispatch({
             // type giống với mục login vì để đẩy dữ liệu user lên reducer 
             type: actionTypes.POST_LOGIN_INFO,
@@ -40,8 +37,9 @@ export const fetchProfile = async (dispatch) => {
     }
 }
 
+ 
 
-export const postSignUp = data => async (dispatch) => {
+export const postSignUp = data => async(dispatch) => {
     try {
         const res = await AuthService.signUp(data);
         if(res.statusCode===400){
@@ -55,7 +53,6 @@ export const postSignUp = data => async (dispatch) => {
 export const updateUser = data => async (dispatch) => {
     try {
         const res = await AuthService.updateUser(data);
-     
     } catch (err) {
         console.log(err);
     }
