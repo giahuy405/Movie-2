@@ -192,7 +192,7 @@ const Profile = () => {
                 <div className="grid grid-cols-12">
                     <div className='md:col-span-2 text-center col-span-12'>
                         <img className='rounded-full border-4 border-orange-500 mx-auto' width={180} src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png" alt="avatar" />
-                        <h3 className='text-lg font-bold text-center'>{infoUser?.hoTen}</h3>
+                        <h3 className='text-lg font-bold text-center text-black dark:text-white'>{infoUser?.hoTen}</h3>
                     </div>
                     <div className='md:col-span-10 md:pl-10 col-span-12 px-3 mt-8 md:mt-1'>
                         {infoUser && infoUser.matKhau ?
