@@ -7,7 +7,7 @@ export const movieService = {
             soPhanTuTrenTrang: 8
         }
     }),
-    getTabs: () => https.get('QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP04'),
+    getTabs: () => https.get('QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=GP07'),
     getScheduleDetail: (id) => {
         const url = 'QuanLyDatVe/LayDanhSachPhongVe'
         return https.get(url, {
