@@ -40,13 +40,18 @@ const Tabs1 = () => {
             target: () => ref4.current,
         },
     ];
-  
+
     const { infoUser } = useSelector(state => state.authReducer);
     const dispatch = useDispatch();
     const { listSeat, orderSeats } = useSelector(state => state.bookingReducer);
     const { id } = useParams();
     useEffect(() => {
-        dispatch(fetchListSeat(id))
+        dispatch(fetchListSeat(id));
+        return () => {
+            dispatch({
+                type: actionTypes.CLEAR_ORDER_SEAT
+            })
+        }
     }, []);
 
     const { thongTinPhim, danhSachGhe } = listSeat;
@@ -304,36 +309,36 @@ const Tabs2 = () => {
                         {displaySeats()}
                     </div>
                     <div className='grid grid-cols-3 gap-3  sm:grid-cols-5 sm:gap-2 max-w-xl mx-auto mt-5'  >
-                            <div className='text-center text-sm text-gray-500'>
-                                <button className="normalSeat"></button>
-                                <p>{t('Ghế thường')}</p>
-                            </div>
-                            <div className='text-center text-sm text-gray-500'>
-                                <button className="normalSeat VipSeat"></button>
-                                <p>{t('Ghế VIP')}</p>
-                            </div>
-                            <div className='text-center text-sm text-gray-500'>
-                                <button className="normalSeat currentChooseSeat"></button>
-                                <p>{t('Ghế đang chọn')}</p>
-                            </div>
-                            <div className='text-center text-sm text-gray-500'>
-                                <button className="normalSeat reservedSeat">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="X-icon-button">
-                                        <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
-                                    </svg>
-                                </button>
-                                <p>{t('Ghế đã được mua')}</p>
-                            </div>
-                            <div className='text-center text-sm text-gray-500'>
-                                <button className="normalSeat myReservedSeat">
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ maxWidth: 26 }} className="  mx-auto">
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
-                                    </svg>
-
-                                </button>
-                                <p>{t('Ghế của bạn')}</p>
-                            </div>
+                        <div className='text-center text-sm text-gray-500'>
+                            <button className="normalSeat"></button>
+                            <p>{t('Ghế thường')}</p>
                         </div>
+                        <div className='text-center text-sm text-gray-500'>
+                            <button className="normalSeat VipSeat"></button>
+                            <p>{t('Ghế VIP')}</p>
+                        </div>
+                        <div className='text-center text-sm text-gray-500'>
+                            <button className="normalSeat currentChooseSeat"></button>
+                            <p>{t('Ghế đang chọn')}</p>
+                        </div>
+                        <div className='text-center text-sm text-gray-500'>
+                            <button className="normalSeat reservedSeat">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="X-icon-button">
+                                    <path fillRule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clipRule="evenodd" />
+                                </svg>
+                            </button>
+                            <p>{t('Ghế đã được mua')}</p>
+                        </div>
+                        <div className='text-center text-sm text-gray-500'>
+                            <button className="normalSeat myReservedSeat">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" style={{ maxWidth: 26 }} className="  mx-auto">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                </svg>
+
+                            </button>
+                            <p>{t('Ghế của bạn')}</p>
+                        </div>
+                    </div>
                     <p className='text-red-500 italic'>{t('Vui lòng chụp lại màn hình')}</p>
                 </div>
             </div>
@@ -410,7 +415,7 @@ const Seats = () => {
             label: <h3 className='font-bold'>{t('HOÀN TẤT')}</h3>,
             children: <Tabs3 />,
         },
-    
+
     ];
     return (
         <div className='dark:bg-[#222831] h-screen dark:text-white'>
@@ -437,7 +442,7 @@ const Seats = () => {
                     </svg>
                 </NavLink>
             </div>
-            
+
         </div>
     );
 };

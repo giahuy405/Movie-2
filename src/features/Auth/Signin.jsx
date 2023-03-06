@@ -85,7 +85,7 @@ const Signin = () => {
         <AuthLayout >
             <div className="">
                 <div className="mb-8">
-                    <div className="py-2 bg-orange-200  lg:bg-white flex justify-center lg:justify-center lg:pb-2 dark:bg-[#393E46]">
+                    <div className="md:py-2 py-5 bg-orange-200  lg:bg-white flex justify-center lg:justify-center lg:pb-2 dark:bg-[#393E46]">
                         <div className="cursor-pointer flex items-center">
                             <div>
                                 <img width={65} src="https://movie-booking-project.vercel.app/img/headTixLogo.png" alt="logo" />

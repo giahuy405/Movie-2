@@ -49,7 +49,7 @@ const Signup = () => {
     return (
         <AuthLayout>
             <div className="">
-                <div className="pt-7">
+                <div className="pt-16  md:pt-7">
                     <div className=" px-12 sm:px-24 md:px-24 lg:px-12  xl:px-18 max-w-xl mx-auto shadow-2xl py-4 rounded-xl dark:bg-[#393E46] ">
                         <div className=''>
                             <div className='flex justify-center items-center '>

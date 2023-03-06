@@ -22,22 +22,25 @@ const MovieItem = (props) => {
         <Card
             style={{ height: 580 }}
             hoverable
-            cover={<img className='h-96 object-cover' alt="example" src={item.hinhAnh} />}
-            onClick={() => {
-                // to={`/detail/${item.maPhim}`}
+            cover={<img onClick={() => {
                 navigateSeat(item.maPhim)
-            }}
+            }} className='h-96 object-cover' alt="example" src={item.hinhAnh} />}
         >
             <div className=''>
                 <div>
                     <Meta
+                        onClick={() => {
+                            navigateSeat(item.maPhim)
+                        }}
                         className='text-orange-500'
                         title={item.tenPhim} description={item.moTa.length > 60 ? item.moTa.slice(0, 60) + '...' : item.moTa} />
                 </div>
                 <div className='absolute bottom-3 w-full left-0 px-4'>
                     {/* to={`/detail/${item.maPhim}`} */}
                     <button
-
+                        onClick={() => {
+                            navigateSeat(item.maPhim)
+                        }}
                         className='w-full rounded-lg p-2 font-bold text-center block bg-orange-600 hover:bg-orange-800 text-white hover:text-white'  >{t('ĐẶT VÉ')}</button>
                 </div>
             </div>

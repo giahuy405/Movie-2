@@ -17,10 +17,8 @@ const HomeTabs = () => {
         }
         navigate('/seats/' + id)
     }
-
     const [tabPosition, setTabPosition] = useState('left');
     const [minWith, setminWith] = useState('min-w-[400px]')
-
 
     // khi màn hình nhỏ hơn 960px đổi position của Tabs
     useEffect(() => {
@@ -56,11 +54,11 @@ const HomeTabs = () => {
                 items={infoTheater.map((item, index) => {
                     return {
                         key: index,
-                        label: <img src={item.logo} className='' width={42} alt={item.logo}
+                        label: <img src={item.logo} className='' width={42} height={42} alt={item.logo}
                             // ảnh bị lỗi sẽ hiển thị ảnh này
                             onError={({ currentTarget }) => {
                                 currentTarget.onerror = null; // prevents looping
-                                currentTarget.src = "https://cdn.pixabay.com/photo/2021/01/10/20/03/laptop-5906264__340.png";
+                                currentTarget.src = "https://www.clker.com/cliparts/T/4/V/L/G/Z/red-error-icon.svg.hi.png";
                             }} />,
                         children: <Tabs
                             tabPosition={tabPosition}

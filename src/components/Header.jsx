@@ -75,21 +75,22 @@ const Header = () => {
                             </button>
                         </nav>
                         :
-                        <div className="items-center flex-shrink-0 hidden lg:flex">
+                        <div className="items-center flex-shrink-0 flex">
                             <NavLink to='/signin'
                                 className={p => {
-                                    const classes = "self-center px-6 py-2 rounded";
-                                    if (p.isActive) return `text-yellow-500 font-bold ${classes}`
-                                    return `${classes}`
+                                    const classes = "self-center md:px-4  px-2 py-1.5 font-semibold rounded   text-white hover:bg-orange-700 duration-300 mr-2  ";
+                                    if (p.isActive) return `text-yellow-400 font-bold ${classes} bg-orange-500 hidden mr-2`
+                                    return `${classes} bg-orange-500 md:bg-transparent md:hover:bg-transparent md:hover:text-orange-500`
                                 }}
                             >{t('Đăng nhập')}</NavLink>
                             <NavLink to='/signup'
                                 className={p => {
-                                    const classes = "self-center px-6 py-2 font-semibold rounded   text-white hover:bg-orange-700 duration-300 mr-2";
+                                    const classes = "self-center md:px-4   px-2 py-1.5  font-semibold rounded   text-white hover:bg-orange-700 duration-300 mr-2 hidden md:block";
                                     if (p.isActive) return `text-yellow-400 font-bold ${classes} bg-orange-500 hidden mr-2`
                                     return `${classes} bg-orange-500`
                                 }}
                             >{t('Đăng ký')}</NavLink>
+
                             <Select
                                 defaultValue="1"
                                 style={{ width: 120 }}

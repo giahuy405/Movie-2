@@ -15,10 +15,10 @@ const ButtonDarkMode = () => {
             icon: "moon-outline",
             text: "dark"
         },
-        {
-            icon: "settings-outline",
-            text: "system"
-        }
+        // {
+        //     icon: "settings-outline",
+        //     text: "system"
+        // }
     ]
     function onWindowMath() {
         if (localStorage.theme === 'dark' || (!("theme" in localStorage) && darkQuery.matches)) {
