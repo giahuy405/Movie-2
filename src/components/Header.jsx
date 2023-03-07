@@ -78,7 +78,7 @@ const Header = () => {
                         <div className="items-center flex-shrink-0 flex">
                             <NavLink to='/signin'
                                 className={p => {
-                                    const classes = "self-center md:px-4 px-2 py-1.5 font-semibold rounded text-black duration-300 mr-2  ";
+                                    const classes = "self-center md:px-4 px-2 py-1.5 font-semibold rounded text-black dark:text-white duration-300 mr-2  ";
                                     return `${classes} bg-orange-500 hover:bg-orange-700 md:bg-transparent md:hover:bg-transparent md:hover:text-orange-500`
                                 }}
                             >{t('Đăng nhập')}</NavLink>

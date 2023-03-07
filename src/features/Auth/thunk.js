@@ -1,6 +1,7 @@
 import { AuthService } from "./services/authService";
 import * as actionTypes from './constants'
 import { DISPLAY_LOADING, HIDDEN_LOADDING } from '../Booking/constants'
+import Swal from 'sweetalert2'
 export const postLoginInfo = data => async (dispatch) => {
     try {
         // hiện loading khi đăng nhập * slow 3G
@@ -17,7 +18,7 @@ export const postLoginInfo = data => async (dispatch) => {
             type: HIDDEN_LOADDING
         })
     } catch (err) {
-        console.log(err);
+    
         dispatch({
             type: HIDDEN_LOADDING
         })
@@ -37,16 +38,30 @@ export const fetchProfile = async (dispatch) => {
     }
 }
 
- 
 
-export const postSignUp = data => async(dispatch) => {
+
+export const postSignUp = data => async (dispatch) => {
     try {
         const res = await AuthService.signUp(data);
-        if(res.statusCode===400){
-            alert(res.content)
-        }
+        return true
     } catch (err) {
-        console.log(err);
+        console.log(err.response.data.content);
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 2400,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        })
+        Toast.fire({
+            icon: 'error',
+            title: `${err.response.data.content}`
+        })
+        return false
     }
 }
 
