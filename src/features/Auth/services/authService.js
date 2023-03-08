@@ -8,7 +8,6 @@ export const AuthService = {
     // fetchProfile để lấy thoogn tin người dùng nếu họ đã đăng nhập trước đó rồi. ( lưu dưới localStorage giờ lấy lên dùng)
     fetchProfile: () => {
         const url = 'QuanLyNguoiDung/ThongTinTaiKhoan';
-        console.log('autSlice',localStorage.getItem('userToken'));
         // do thằng này là trường hợp đặc biệt nên ghi đầy đủ, lấy localStorage mới nhất 
         return https.post(url,undefined,
             {

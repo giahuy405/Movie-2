@@ -39,7 +39,6 @@ export const fetchProfile = async (dispatch) => {
 }
 
 
-
 export const postSignUp = data => async (dispatch) => {
     try {
         const res = await AuthService.signUp(data);
