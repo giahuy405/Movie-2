@@ -37,8 +37,9 @@ const Profile = () => {
     const onSubmit = async (values, actions) => {
         await new Promise((resolve, reject) => setTimeout(resolve, 1000));
         console.log(values)
-        await dispatch(updateUser(values));
+        const res = await dispatch(updateUser(values));
         await dispatch(fetchProfile)
+        if (!res) return;
         const Toast = await Swal.mixin({
             toast: true,
             position: 'top-end',
@@ -56,13 +57,11 @@ const Profile = () => {
         })
         // window.location.reload(false);
     }
-
     const items = [
         {
             key: '1',
             label: <h3 className='font-bold'>{t('THÔNG TIN TÀI KHOẢN')} </h3>,
             children: <>
-                {/* đợi có infoUser thì mới render form ra */}
                 <Formik
                     initialValues={{
                         taiKhoan: `${infoUser?.taiKhoan}`,
@@ -196,7 +195,7 @@ const Profile = () => {
                     </div>
                     <div className='md:col-span-10 md:pl-10 col-span-12 px-3 mt-8 md:mt-1'>
                         {infoUser && infoUser.matKhau ?
-                            <Tabs activeKey={useSearch.get('tab') || '1'} items={items} onChange={onChangeTabs} /> 
+                            <Tabs activeKey={useSearch.get('tab') || '1'} items={items} onChange={onChangeTabs} />
                             :
                             <Skeleton active />
                         }
