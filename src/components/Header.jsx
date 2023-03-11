@@ -18,17 +18,6 @@ const Header = () => {
                     <NavLink rel="noopener noreferrer" to='/' aria-label="Back to homepage" className="flex items-center">
                         <img width={40} src="https://movie-booking-project.vercel.app/img/headTixLogo.png" alt="" />
                     </NavLink>
-                    {/* <ul className="items-stretch hidden space-x-3 lg:flex">
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#lichChieu" className="flex items-center px-4  border-b-2 dark:border-transparent ">Phim</a>
-                        </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#suatChieu" className="flex items-center px-4  border-b-2 dark:border-transparent ">Suất chiếu</a>
-                        </li>
-                        <li className="flex">
-                            <a rel="noopener noreferrer" href="#lichChieu" className="flex items-center px-4  border-b-2 dark:border-transparent ">Tin tức</a>
-                        </li>
-                    </ul> */}
                     {(token && infoUser) ?
                         <nav className='flex items-center'>
                             <NavLink
