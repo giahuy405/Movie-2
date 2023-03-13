@@ -6,9 +6,9 @@ git remote remove origin
 git remote add origin link
 
 USER :
-https://movie-2-llpf-l1vrp2cty-giahuy405.vercel.app/
+https://movie-2-llpf-11y51sm2i-giahuy405.vercel.app/
 
 
 ADMIN : 
-https://movie-2-llpf-l1vrp2cty-giahuy405.vercel.app/admin
+https://movie-2-llpf-11y51sm2i-giahuy405.vercel.app/admin
 
