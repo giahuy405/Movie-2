@@ -5,7 +5,6 @@ import { Pagination } from 'antd';
 import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 const MovieList = () => {
-    const dispatch = useDispatch();
     const { movies } = useSelector(state => state.bookingReducer);
     const [useSearch, setSearchParam] = useSearchParams();
     const { t, i18n } = useTranslation();

@@ -35,6 +35,13 @@ const MovieItem = (props) => {
                         className='text-orange-500'
                         title={item.tenPhim} description={item.moTa.length > 60 ? item.moTa.slice(0, 60) + '...' : item.moTa} />
                 </div>
+                {item.hot && <div className='absolute top-3 -left-1 bg-red-600 p-0.5 px-3 rounded-r text-white'>
+                    HOT
+                </div>}
+                {item.dangChieu && <div className='absolute top-12 -left-1 bg-blue-600 p-0.5 px-3 rounded-r text-white'>
+                    Đang chiếu
+                </div>}
+                
                 <div className='absolute bottom-3 w-full left-0 px-4'>
                     {/* to={`/detail/${item.maPhim}`} */}
                     <button

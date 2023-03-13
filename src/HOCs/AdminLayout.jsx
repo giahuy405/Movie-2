@@ -1,130 +1,94 @@
-import React, { useCallback, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchProfile } from '../features/Auth/thunk';
-import { DesktopOutlined, FileOutlined, PicCenterOutlined, PieChartOutlined, PlaySquareOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
+import React, { useEffect } from 'react';
+import { DesktopOutlined, FileOutlined, LoadingOutlined, PicCenterOutlined, PieChartOutlined, PlaySquareOutlined, PlusCircleOutlined, RollbackOutlined, TeamOutlined, UserOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import { useState } from 'react';
-import { NavLink, useNavigate, useSearchParams } from 'react-router-dom';
-const { Header, Content, Footer, Sider } = Layout;
-
-
-
+import { NavLink, useNavigate } from 'react-router-dom';
+import { LOG_OUT } from '../features/Auth/constants';
+import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from 'react-redux';
+import Footer from '../components/Footer';
+import SiderAdmin from '../components/SiderAdmin';
+import ButtonDarkMode from '../components/ButtonDarkMode';
+const { Header, Content, Sider } = Layout;
 
 
 const AdminLayout = (props) => {
-    const dispatch = useDispatch();
-    const [activeKey, setActiveKey] = useState();
-    useEffect(() => {
-        dispatch(fetchProfile)
-    }, [])
-    const [collapsed, setCollapsed] = useState(false);
+    
+    const { infoUser } = useSelector(state => state.authReducer)
+    const navigate = useNavigate();
     const {
         token: { colorBgContainer },
     } = theme.useToken();
-    const handleMenuClick = useCallback(({ key }) => {
-        // setActiveKey(`${key}`)
-    })
-    const toggleCollapsed = () => {
-        setCollapsed(!collapsed);
-    };
-    const items = [
-        {
-            key: "img",
-            label: <span style={{ color: "#fb4226" }}>TIX VN</span>,
-            icon: (
-                <img
-                    src="https://movie-booking-project.vercel.app/img/headTixLogo.png"
-                    alt=""
-                    style={{ width: 25 }}
-                />
-            ),
-        },
-
-        {
-            key: "1",
-            label: <NavLink to="/admin" >User</NavLink>,
-            icon: <UserOutlined />,
-        },
-        {
-            key: "2",
-            label: <NavLink to="/admin/films" >List films</NavLink>,
-            icon: <PicCenterOutlined />,
-        },
-        {
-            key: 4,
-            label: <span>Showtime</span>,
-            icon: <DesktopOutlined />,
-        },
-
-    ];
+    const dispatch = useDispatch()
+    const token = localStorage.getItem('userToken')
+    useEffect(() => {
+        if (!token) {
+            navigate('/signin')
+        }
+        window.scrollTo(0, 0);
+    }, [token]);
     return (
         <div>
-            <Layout
-                style={{
-                    minHeight: '100vh',
-                }}
-            >
-                <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
-                    <div
-                        style={{
-                            height: 32,
-                            margin: 16,
-                            background: 'rgba(255, 255, 255, 0.2)',
-                        }}
-                    />
-                    <Menu
-
-                        style={{ position: "relative" }}
-                        defaultSelectedKeys={"1"}
-                        defaultOpenKeys={["sub1"]}
-                        mode="inline"
-                        theme="dark"
-                        inlineCollapsed={collapsed}
-                        items={items}
-                    />
-
-                </Sider>
+            <Layout style={{ minHeight: '100vh', }}  >
+               <SiderAdmin/>
                 <Layout className="site-layout">
                     <Header
                         style={{
                             padding: 0,
-                            background: colorBgContainer,
+                            height: 'initial',
+                            lineHeight: 0
                         }}
-                    />
-                    <Content
-                        style={{
-                            margin: '0 16px',
-                        }}
+                       
                     >
-                        <Breadcrumb
-                            style={{
-                                margin: '8px 0',
-                            }}
-                        >
-                            <Breadcrumb.Item>User</Breadcrumb.Item>
-                            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-                        </Breadcrumb>
-                        <div
-                            style={{
-                                padding: 24,
-                                minHeight: 360,
-                                background: colorBgContainer,
-                            }}
-                        >
-                            {props.children}
+                        <div className='flex items-center justify-between px-2 py-1'>
+                            <NavLink to='/' className='flex items-center hover:text-orange-500'><span className='mr-1'>Quay lại trang chủ</span> <RollbackOutlined /></NavLink>
+                            <div className='flex items-center justify-around'>
+
+                                <div className='mr-4 font-bold '>
+                                    <NavLink to='/profile' className='flex items-center hover:text-orange-600'>
+                                        <img
+                                            className='rounded-full border-2 border-orange-600 mr-1'
+                                            width={40}
+                                            src="https://e7.pngegg.com/pngimages/799/987/png-clipart-computer-icons-avatar-icon-design-avatar-heroes-computer-wallpaper-thumbnail.png"
+                                            alt="" />
+                                        {infoUser ? <p>{infoUser.taiKhoan}</p> : <div><LoadingOutlined /></div>}</NavLink>
+                                </div>
+                                <button
+                                    onClick={async () => {
+                                        Swal.fire({
+                                            text: 'Bạn chắc chắn muốn đăng xuất ?',
+                                            icon: 'warning',
+                                            showCancelButton: true,
+                                            confirmButtonColor: '#EA580C',
+                                            cancelButtonColor: 'grey',
+                                            confirmButtonText: 'Log out'
+                                        }).then((result) => {
+                                            if (result.isConfirmed) {
+                                                localStorage.removeItem('userToken');
+                                                dispatch({
+                                                    type: LOG_OUT
+                                                })
+                                                Swal.fire({
+                                                    title: 'Đăng xuất thành công',
+                                                    icon: 'success',
+                                                    timer: 1500,
+                                                })
+                                            }
+                                        })
+                                    }}
+                                    className=' bg-orange-500 leading-9 px-4 hover:bg-orange-700 rounded text-white '>
+                                    Đăng xuất
+                                </button>
+                            </div>
                         </div>
-                    </Content>
-                    <Footer
-                        style={{
-                            textAlign: 'center',
-                        }}
-                    >
-                        Ant Design ©2023 Created by Ant UED
-                    </Footer>
+                    </Header>
+                    {props.children}
+                    
+                    <Footer />
+                    <ButtonDarkMode/>
                 </Layout>
             </Layout>
-
-        </div >
+        </div>
     );
 };
 

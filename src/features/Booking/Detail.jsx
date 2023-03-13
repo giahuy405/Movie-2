@@ -54,7 +54,7 @@ const Detail = () => {
         mediaQuery.addListener(handleMediaQueryChange);
         return () => mediaQuery.removeListener(handleMediaQueryChange);
     }, []);
-
+    
     const items = [
         {
             key: '1',

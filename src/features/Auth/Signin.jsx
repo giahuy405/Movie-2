@@ -77,7 +77,7 @@ const Signin = () => {
                 icon: 'success',
                 title: 'Đăng nhập thành công !'
             })
-            navigate('/')
+            navigate(-1)
         }
         else setErrorInfo({ taiKhoan: "Vui lòng kiểm tra lại tài khoản", matKhau: "Vui lòng kiểm tra lại mật khẩu" })
     }

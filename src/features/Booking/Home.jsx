@@ -19,7 +19,6 @@ const Home = () => {
     useEffect(() => {
         dispatch(fetchBanners);
         dispatch(fetchInfoTheater);
-        // fetch dữ liệu infoUser mới
         dispatch(fetchProfile)
     }, [])
 

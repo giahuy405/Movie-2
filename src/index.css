@@ -498,22 +498,157 @@ input:disabled {
   }
 }
 
+/* input type FILE */
+:where(.css-1km3mtt).ant-form input[type="file"] {
+  display: none;
+}
 
-:where(.css-dev-only-do-not-override-1km3mtt).ant-layout .ant-layout-sider{
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: .3s;
+  border-radius: 6px;
+}
+
+.custom-file-upload:hover {
+  border: 1px solid #ff7733;
+  color: #ff7733;
+}
+
+:where(.css-1km3mtt).ant-input-search>.ant-input-group>.ant-input-group-addon:last-child .ant-input-search-button:not(.ant-btn-primary) {
+  display: none;
+}
+
+.ant-input-search :where(.css-1km3mtt).ant-input-group .ant-input-affix-wrapper:not(:last-child) {
+  border-radius: 6px;
+}
+
+/* admin sider dark mode */
+.dark :where(.css-1km3mtt).ant-layout .ant-layout-sider {
   background-color: #393E46;
 }
-:where(.css-dev-only-do-not-override-1km3mtt).ant-layout .ant-layout-sider-trigger{
+
+.dark :where(.css-1km3mtt).ant-layout .ant-layout-sider-trigger {
   background-color: #222831;
 }
-:where(.css-dev-only-do-not-override-1km3mtt).ant-menu-dark{
+
+/* menu antd  dark mdode*/
+.dark :where(.css-1km3mtt).ant-menu-dark {
   background-color: #393E46;
+  color: white;
 }
-:where(.css-dev-only-do-not-override-1km3mtt).ant-menu-dark .ant-menu-item-selected{
-  background-color: #ff5733;
+
+.dark :where(.css-1km3mtt).ant-menu-dark .ant-menu-submenu-selected>.ant-menu-submenu-title {
+  color: white
 }
-:where(.css-dev-only-do-not-override-1km3mtt).ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):active{
-  background-color: #ff5733;
+
+.dark :where(.css-1km3mtt).ant-menu-dark .ant-menu-item-selected {
+  background-color: #ff7733;
 }
+
+ 
+
+.dark :where(.css-1km3mtt).ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):active {
+  background-color: #ff7733;
+}
+ 
+.dark :where(.css-1km3mtt).ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-submenu-title:active {
+  background-color: #ff7733;
+}
+
+:where(.css-1km3mtt).ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-submenu-title:active {
+  background-color: #ff7733;
+}
+:where(.css-1km3mtt).ant-layout .ant-layout-header{
+  background: white;
+}
+.dark :where(.css-1km3mtt).ant-layout .ant-layout-header{
+  background: #505050;
+  color: white;
+}
+.dark :where(.css-1km3mtt).ant-breadcrumb{
+  background-color: #ababab;
+  color: white;
+  padding: 16px;
+  margin: 0;
+}
+:where(.css-1km3mtt).ant-breadcrumb{
+  padding: 16px;
+  margin: 0;
+}
+.dark :where(.css-1km3mtt).ant-layout .ant-layout-content{
+  margin: 0!important;
+  border-radius: 0!important;
+  background-color: #ccc;
+}
+ :where(.css-1km3mtt).ant-layout .ant-layout-content{
+  margin: 0!important;
+  border-radius: 0!important;
+  
+}
+/* admin sider light mode */
+:where(.css-1km3mtt).ant-layout .ant-layout-sider {
+  background-color: white;
+  border-right: 1px solid rgb(202, 202, 202);
+}
+:where(.css-1km3mtt).ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):hover{
+  background-color: #ff7733;
+}
+:where(.css-1km3mtt).ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-submenu-title:hover{
+  background-color: #ff7733;
+}
+:where(.css-1km3mtt).ant-layout .ant-layout-sider-trigger {
+  background-color: #ffffff;
+}
+
+/* menu antd light mode */
+:where(.css-1km3mtt).ant-menu-dark {
+  background-color: #ffffff;
+  color: gray;
+}
+
+:where(.css-1km3mtt).ant-menu-dark .ant-menu-submenu-selected>.ant-menu-submenu-title {
+  color: gray
+}
+ 
+
+:where(.css-1km3mtt).ant-menu-dark .ant-menu-item-selected {
+  background-color: #ff7733;
+}
+
+:where(.css-1km3mtt).ant-menu-dark:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):active {
+  background-color: #ff7733;
+}
+
+:where(.css-1km3mtt).ant-btn-primary {
+  background-color: #ff7733 !important;
+}
+
+:where(.css-1km3mtt).ant-input-affix-wrapper:focus,
+:where(.css-1km3mtt).ant-input-affix-wrapper-focused {
+  border-color: #ff7733;
+}
+
+:where(.css-1km3mtt).ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: #ff7733;
+}
+
+/* switch antd */
+:where(.css-1km3mtt).ant-switch .ant-switch-inner {
+  background-color: rgba(128, 128, 128, 0.3);
+}
+
+:where(.css-1km3mtt).ant-switch.ant-switch-checked .ant-switch-inner {
+  background-color: #ff7733;
+}
+
+:where(.css-1km3mtt).ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  background-color: #ff7733;
+}
+
+/* loader square */
 .loader {
   position: relative;
   display: grid;
