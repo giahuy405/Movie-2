@@ -10,11 +10,11 @@ This is a web application for a movie theater that allows users to buy tickets, 
 * Showtimes listing (list of showtimes for each movie)
 * Seat reservation (user can select seats and buy tickets)
 * Booking management (list of all user's bookings and details)
+* Language selection (Vietnamese, Chinese, and English)
+* Dark mode / Light mode
 
 **Fast testing** : https://movie-2-llpf-11y51sm2i-giahuy405.vercel.app/
-
 Account User   :   giahuy4
-
 Password User  :   123456
 
 
@@ -24,11 +24,10 @@ Password User  :   123456
 * Showtime management (set showtimes for each movie)
 * Seat management (set seats for each showtime)
 * Booking management (list of all bookings and details)
+* Dark mode / Light mode
 
 **Fast testing** : https://movie-2-llpf-11y51sm2i-giahuy405.vercel.app/admin
-
 Account Admin  :   giacat2910asd
-
 Password Admin :   123123
 
 
