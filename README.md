@@ -14,6 +14,7 @@ This is a web application for a movie theater that allows users to buy tickets, 
 **Fast testing** : https://movie-2-llpf-11y51sm2i-giahuy405.vercel.app/
 
 Account User   :   giahuy4
+
 Password User  :   123456
 
 
@@ -27,6 +28,7 @@ Password User  :   123456
 **Fast testing** : https://movie-2-llpf-11y51sm2i-giahuy405.vercel.app/admin
 
 Account Admin  :   giacat2910asd
+
 Password Admin :   123123
 
 
