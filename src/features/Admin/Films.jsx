@@ -162,6 +162,7 @@ const Films = () => {
                             className=' block w-[30%] mr-3'
                         />
                         <Select
+                            className='admin'
                             value={searchParam.get('groupID') ? searchParam.get('groupID') : 'GP01'}
                             onChange={handleChangeSelect}
                             options={[

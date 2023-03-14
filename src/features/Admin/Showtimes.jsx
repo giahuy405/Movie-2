@@ -151,7 +151,7 @@ const Showtimes = () => {
                                         style={{
                                             width: 200
                                         }}
-
+                                        className='admin'
                                         onChange={handleChangeSelectTheater}
                                         options={state.heThongRapChieu?.map(item =>
                                         (
@@ -173,6 +173,7 @@ const Showtimes = () => {
                                         style={{
                                             width: 310
                                         }}
+                                        className='admin'
                                         onChange={handleChangeCinemaCluster}
                                         options={state.cumRapChieu?.map(item => ({
                                             label: item.tenCumRap,

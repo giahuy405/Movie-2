@@ -158,7 +158,9 @@ const Edit = () => {
                                         <span className='text-xs text-red-500'>{formik.errors.moTa}</span>}
                                 </Form.Item>
                                 <Form.Item label="Mã nhóm">
-                                    <Select name='maNhom' value={formik.values.maNhom} onChange={handleChangeSelect}
+                                    <Select
+                                        className='admin'
+                                        name='maNhom' value={formik.values.maNhom} onChange={handleChangeSelect}
                                         width={100}
                                         options={[
                                             {
