@@ -5,7 +5,7 @@ import AdminLayout from '../../HOCs/AdminLayout';
 import { Form, Select, InputNumber } from 'antd';
 import { useDispatch } from 'react-redux';
 import { adminService } from '../Admin/services/adminServices'
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { useFormik } from 'formik';
 import moment from 'moment';
 import { showtimeSchema } from '../../schemas/showtimeSchema';
@@ -69,6 +69,10 @@ const Showtimes = () => {
         },
         validationSchema: showtimeSchema
     })
+    function disabledDate(current) {
+        // Can not select days before today and today
+        return current && current < moment().endOf('day');
+    }
     useEffect(() => {
         async function callAPI() {
             try {
@@ -121,7 +125,11 @@ const Showtimes = () => {
     return (
         <AdminLayout>
             <Breadcrumb   >
-                Admin / Lịch chiếu phim
+                <p>Admin </p>
+                <p className='mx-2'>/</p>
+                <NavLink className='dark:text-white' to='/admin/films'>Danh sách phim</NavLink>
+                <p className='mx-2'>/</p>
+                <p>Lịch chiếu phim</p>
             </Breadcrumb>
             <Content >
                 <div style={{
@@ -140,8 +148,9 @@ const Showtimes = () => {
                     >
                         <div className='flex mb-5'>
                             <div className='w-1/4 text-center mr-14'>
+                              
+                                <img width={140} className='rounded shadow-2xl block mx-auto mb-1' src={film.hinhAnh} alt="1" />
                                 <h3 className='font-bold'>{film.tenPhim}</h3>
-                                <img width={140} className='rounded shadow-2xl block mx-auto' src={film.hinhAnh} alt="" />
                             </div>
                             <div className='w-2/4' >
                                 <Form.Item
@@ -188,7 +197,8 @@ const Showtimes = () => {
                                     label="Ngày chiếu "
                                 >
                                     <DatePicker
-                                        placeholder='Chọn ngày chiếu'
+                                        disabledDate={disabledDate}
+                                        placeholder='Chọn ngày và giờ chiếu'
                                         format='DD/MM/YYYY hh:mm:ss'
                                         showTime
                                         onChange={onChangeDate}

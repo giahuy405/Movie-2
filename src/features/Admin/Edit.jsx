@@ -70,7 +70,10 @@ const Edit = () => {
         validationSchema: editFilmSchema
     })
 
-
+    function disabledDate(current) {
+        // Can not select days before today and today
+        return current && current < moment().endOf('day');
+    }
     //Fri Apr 21 2023 00:00:00 GMT+0700 (Indochina Time) to 21/04/2023
     // const convertDate = (str) => {
     //     let date = new Date(str);
@@ -87,7 +90,6 @@ const Edit = () => {
         const newDta = moment(date).format('DD/MM/YYYY')
         formik.setFieldValue("ngayKhoiChieu", newDta);
     };
-
     const handleChangeSwitch = (name) => value => formik.setFieldValue(name, value);
     const handleChangeFile = async e => {
         // lấy file ra từ event
@@ -102,15 +104,22 @@ const Edit = () => {
             setImgSrc(e.target.result)
         }
     }
-    const handleChangeSelect = (value) => {
-        formik.setFieldValue('maNhom', value)
-    };
+    const handleChangeRadio = (e) => {
+        console.log(e.target.value)
+        if (e.target.value === 'dangChieu') {
+            formik.setFieldValue('dangChieu', true);
+            formik.setFieldValue('sapChieu', false);
+        } else {
+            formik.setFieldValue('dangChieu', false);
+            formik.setFieldValue('sapChieu', true);
+        }
+    }
     return (
         <AdminLayout>
             <Breadcrumb >
                 <p>Admin </p>
                 <p className='mx-2'>/</p>
-                <NavLink className='dark:text-white' to='/admin/films'>Phim</NavLink>
+                <NavLink className='dark:text-white' to='/admin/films'>Danh sách phim</NavLink>
                 <p className='mx-2'>/</p>
                 <p>Cập nhật phim</p>
             </Breadcrumb>
@@ -157,57 +166,33 @@ const Edit = () => {
                                     {formik.touched.moTa && formik.errors.moTa &&
                                         <span className='text-xs text-red-500'>{formik.errors.moTa}</span>}
                                 </Form.Item>
-                                <Form.Item label="Mã nhóm">
-                                    <Select
-                                        className='admin'
-                                        name='maNhom' value={formik.values.maNhom} onChange={handleChangeSelect}
-                                        width={100}
-                                        options={[
-                                            {
-                                                value: 'GP01',
-                                                label: 'GP01',
-                                            },
-                                            {
-                                                value: 'GP02',
-                                                label: 'GP02',
-                                            },
-                                            {
-                                                value: 'GP03',
-                                                label: 'GP03',
-                                            },
-                                            {
-                                                value: 'GP04',
-                                                label: 'GP04',
-                                            },
-                                        ]} />
-                                </Form.Item>
-                            </div>
-
-                            <div>
-                                {/* DD/MM/YYYY */}
                                 <Form.Item label="Ngày chiếu" className='mb-3'>
                                     <DatePicker
+                                        // disabled the time past 
+                                        disabledDate={disabledDate}
                                         onChange={handleChangeDatePicker}
                                         value={dayjs(formik.values.ngayKhoiChieu, dateFormat)}
                                         format={dateFormat}
-                                        placeholder={dateFormat} />
+                                        placeholder={dateFormat}
+                                        allowClear={false}
+                                    />
                                     <br />
                                     {formik.touched.ngayKhoiChieu && formik.errors.ngayKhoiChieu &&
                                         <span className='text-xs text-red-500'>{formik.errors.ngayKhoiChieu}</span>}
                                 </Form.Item>
-                                {/* SWITCH */}
-                                <Form.Item label="Sắp chiếu" valuePropName="checked" className='mb-3'>
-                                    <Switch onChange={handleChangeSwitch('sapChieu')} checked={formik.values.sapChieu} />
-                                </Form.Item>
-                                <Form.Item label="Đang chiếu" valuePropName="checked" className='mb-3'>
-                                    <Switch onChange={handleChangeSwitch('dangChieu')} checked={formik.values.dangChieu} />
+                            </div>
+                            <div>
+                                <Form.Item label="Tình trạng"  >
+                                    <Radio.Group onChange={handleChangeRadio} value={formik.values.dangChieu ? 'dangChieu' : 'sapChieu'} >
+                                        <Radio value='dangChieu'>Đang chiếu</Radio>
+                                        <Radio value='sapChieu'>Sắp chiếu</Radio>
+                                    </Radio.Group>
                                 </Form.Item>
                                 <Form.Item label="Phim Hot" valuePropName="checked" >
                                     <Switch onChange={handleChangeSwitch('hot')} checked={formik.values.hot} />
                                 </Form.Item>
-                                {/* Star */}
                                 <Form.Item label="Số sao">
-                                    <InputNumber defaultValue={5} onChange={handleChangeSwitch('danhGia')} min={1} max={10} />
+                                    <InputNumber value={formik.values.danhGia} onChange={handleChangeSwitch('danhGia')} min={1} max={10} />
                                 </Form.Item>
                                 {/* UPLOAD FILE */}
                                 <Form.Item label="Hình ảnh">
@@ -220,7 +205,6 @@ const Edit = () => {
                                         <span className='text-xs text-red-500'>{formik.errors.hinhAnh}</span>}
                                     <img className='mt-3 rounded' width={100} src={!imgSrc ? movieDetail?.hinhAnh : imgSrc} alt="..." />
                                 </Form.Item>
-
                             </div>
                         </div>
                         {/* ===================== */}

@@ -84,13 +84,23 @@ const Addnew = () => {
         console.log(maNhom)
         formik.setFieldValue('maNhom', maNhom)
     }
+    const handleChangeRadio = (e) => {
+        console.log(e.target.value)
+        if (e.target.value === 'dangChieu') {
+            formik.setFieldValue('dangChieu', true);
+            formik.setFieldValue('sapChieu', false);
+        } else {
+            formik.setFieldValue('dangChieu', false);
+            formik.setFieldValue('sapChieu', true);
+        }
+    }
     return (
         <AdminLayout>
             <Breadcrumb
             >
                 <p>Admin </p>
                 <p className='mx-2'>/</p>
-                <NavLink className='dark:text-white ' to='/admin/films'>Phim</NavLink>
+                <NavLink className='dark:text-white ' to='/admin/films'>Danh sách phim</NavLink>
                 <p className='mx-2'>/</p>
                 <p>Thêm phim mới</p>
             </Breadcrumb>
@@ -138,7 +148,7 @@ const Addnew = () => {
                                         <span className='text-xs text-red-500'>{formik.errors.moTa}</span>}
                                 </Form.Item>
                                 <Form.Item label="Mã nhóm">
-                                    <Select name='maNhom'  className='admin' value={formik.values.maNhom} onChange={handleChangeSelect}
+                                    <Select name='maNhom' className='admin' value={formik.values.maNhom} onChange={handleChangeSelect}
                                         width={100}
                                         options={[
                                             {
@@ -171,12 +181,12 @@ const Addnew = () => {
                                     {formik.touched.ngayKhoiChieu && formik.errors.ngayKhoiChieu &&
                                         <span className='text-xs text-red-500'>{formik.errors.ngayKhoiChieu}</span>}
                                 </Form.Item>
-                                {/* SWITCH */}
-                                <Form.Item label="Sắp chiếu" valuePropName="checked" className='mb-3'>
-                                    <Switch onChange={handleChangeSwitch('sapChieu')} />
-                                </Form.Item>
-                                <Form.Item label="Đang chiếu" valuePropName="checked" className='mb-3'>
-                                    <Switch onChange={handleChangeSwitch('dangChieu')} />
+                                {/* TÌNH TRẠNG */}
+                                <Form.Item label="Tình trạng" >
+                                    <Radio.Group onChange={handleChangeRadio}  >
+                                        <Radio value='dangChieu'>Đang chiếu</Radio>
+                                        <Radio value='sapChieu'>Sắp chiếu</Radio>
+                                    </Radio.Group>
                                 </Form.Item>
                                 <Form.Item label="Phim Hot" valuePropName="checked" >
                                     <Switch onChange={handleChangeSwitch('hot')} />

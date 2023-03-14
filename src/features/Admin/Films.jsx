@@ -139,7 +139,7 @@ const Films = () => {
     return (
         <AdminLayout>
             <Breadcrumb   >
-                Admin / Phim
+                Admin / Danh sách phim
             </Breadcrumb>
             <Content   >
                 <div

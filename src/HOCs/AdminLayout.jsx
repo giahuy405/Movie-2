@@ -38,7 +38,6 @@ const AdminLayout = (props) => {
                             height: 'initial',
                             lineHeight: 0
                         }}
-                       
                     >
                         <div className='flex items-center justify-between px-2 py-1'>
                             <NavLink to='/' className='flex items-center hover:text-orange-500'><span className='mr-1'>Quay lại trang chủ</span> <RollbackOutlined /></NavLink>
